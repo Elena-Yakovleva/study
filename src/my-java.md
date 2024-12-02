@@ -3,7 +3,6 @@
 По правилам Объектно-ориентированного программирования для того, чтобы создать функцию, необходимо создать объект, который будет находится эта функция. По сути объект будет выполнять эту функцию. Для того, чтобы создать объект, необходимо создать его класс, в котором будет находится описание типа данных.
 
 
-
 |**Основы**||
 |-|-|
 |Файл с расширение FileName.java содержит информацию о коде программы.| Код программы находится внутри блока  public class FileName{}. Программа может иметь один или несколько файлов с расширением .java|
@@ -35,21 +34,29 @@
 
 - **Apache HttpClient** - Библиотека для HTTP  запросов
 
-    <dependency>
+```java
+
+     <dependency>
         <groupId>org.apache.httpcomponents.client5</groupId>
         <artifactId>httpclient5</artifactId>
         <version>5.3</version>
-    </dependency>
+     </dependency>
+```
 
 - **Jackson Databind** - позволяет переводить данные полученные в Json формате в данные понятные для прочтения Java. Основной функционал для работы с форматом JSON предоставляет класс ObjectMapper.
+
+```java
 
     <dependency>
        <groupId>com.fasterxml.jackson.core</groupId>
        <artifactId>jackson-databind</artifactId>
        <version>2.16.2</version>
     </dependency>
+```
 
 - **JUnit Jupiter** - это модуль для работы с автотестами|
+
+```java 
 
     <dependency>
         <groupId>org.junit.jupiter</groupId>
@@ -57,8 +64,11 @@
         <version>5.10.2</version>
         <scope>test</scope>
     </dependency>
+```
 
 - **Surefire** - плагин для Maven, без которого автотесты могут не запускаться  
+
+```java
 
     <build>
         <plugins>
@@ -72,14 +82,19 @@
             </plugin>
         </plugins>
     </build>
+```
 
 - **TelegramBot** -  библиотека для подключения телеграмм бота.
 
 [Библиотека](https://github.com/rubenlagus/TelegramBots/blob/aad139de980ae25ee7a4b06bbe7644c6077421ce/TelegramBots.wiki/Getting-Started.md)
+
+```java
 
     <dependency>
         <groupId>org.telegram</groupId>
         <artifactId>telegrambots</artifactId>
         <version>6.8.0</version>
     </dependency>
+```
+
 
