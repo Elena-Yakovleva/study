@@ -33,4 +33,32 @@
 |Подключение библиотек происходит в файле pom.xml  в теге <dependencies></dependencies>||
 |Сборник библиотек для Maven|https://Maven Central Repository: mvnrepository.com/repos/central|
 |Библиотека для HTTP  запросов|Apache HttpClient|
+|||
+|JUnit Jupiter - это модуль для работы с автотестами|<dependencies>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>|
+|Surefire - плагин для Maven, без которого автотесты могут не запускаться  |<build>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <failIfNoTests>true</failIfNoTests>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>|
+|||
 
