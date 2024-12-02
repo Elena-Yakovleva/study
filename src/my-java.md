@@ -32,33 +32,54 @@
 |**Прочее**||
 |Подключение библиотек происходит в файле pom.xml  в теге <dependencies></dependencies>||
 |Сборник библиотек для Maven|https://Maven Central Repository: mvnrepository.com/repos/central|
-|Библиотека для HTTP  запросов|Apache HttpClient|
-|||
-|JUnit Jupiter - это модуль для работы с автотестами|<dependencies>
 
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.10.2</version>
-            <scope>test</scope>
-        </dependency>
+- **Apache HttpClient** - Библиотека для HTTP  запросов
 
-    </dependencies>|
-|Surefire - плагин для Maven, без которого автотесты могут не запускаться  |<build>
+    <dependency>
+        <groupId>org.apache.httpcomponents.client5</groupId>
+        <artifactId>httpclient5</artifactId>
+        <version>5.3</version>
+    </dependency>
 
+- **Jackson Databind** - позволяет переводить данные полученные в Json формате в данные понятные для прочтения Java. Основной функционал для работы с форматом JSON предоставляет класс ObjectMapper.
+
+    <dependency>
+       <groupId>com.fasterxml.jackson.core</groupId>
+       <artifactId>jackson-databind</artifactId>
+       <version>2.16.2</version>
+    </dependency>
+
+- **JUnit Jupiter** - это модуль для работы с автотестами|
+
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.10.2</version>
+        <scope>test</scope>
+    </dependency>
+
+- **Surefire** - плагин для Maven, без которого автотесты могут не запускаться  
+
+    <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
-                    <failIfNoTests>true</failIfNoTests>
+                   <failIfNoTests>true</failIfNoTests>
                 </configuration>
             </plugin>
-
         </plugins>
+    </build>
 
-    </build>|
-|||
+- **TelegramBot** -  библиотека для подключения телеграмм бота.
+
+[Библиотека](https://github.com/rubenlagus/TelegramBots/blob/aad139de980ae25ee7a4b06bbe7644c6077421ce/TelegramBots.wiki/Getting-Started.md)
+
+    <dependency>
+        <groupId>org.telegram</groupId>
+        <artifactId>telegrambots</artifactId>
+        <version>6.8.0</version>
+    </dependency>
 
