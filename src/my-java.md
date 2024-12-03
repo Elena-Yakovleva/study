@@ -96,5 +96,36 @@
         <version>6.8.0</version>
     </dependency>
 ```
+- **Maven-checkstyle-plugin" - плагин для проверки правильности написания переменных. В случае если переменная названа с заглавной буквы, то тест обружается.
+
+```java
+
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-checkstyle-plugin</artifactId>
+    <version>3.2.1</version>
+    <configuration>
+        <checkstyleRules>
+            <module name="Checker">
+                <module name="TreeWalker">
+                    <module name="LocalVariableName"/>
+                </module>
+            </module>
+        </checkstyleRules>
+    </configuration>
+    <executions>
+        <execution>
+            <id>validate</id>
+                <phase>validate</phase>
+                <goals>
+                    <goal>check</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+
+```
+
+
 
 
