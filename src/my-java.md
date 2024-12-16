@@ -253,50 +253,49 @@ nameMetod.csv
 Code Coverage — метрика, показывающая, насколько наш код покрыт автотестами, т.е. % запущенного в результате прогона автотестов.
 
 ```
-<plugins>
+
   <plugin>
     <groupId>org.jacoco</groupId>
     <artifactId>jacoco-maven-plugin</artifactId>
     <version>0.8.5</version>
-  </plugin> 
 
-  <executions>
-    <execution>
-      <id>prepare-agent</id>
-      <goals>
-        <goal>prepare-agent</goal>
-      </goals>
-    </execution>
-
-    <execution>
-      <id>report</id>
-      <phase>verify</phase>
+    <executions>
+      <execution>
+        <id>prepare-agent</id>
         <goals>
-          <goal>report</goal>
+          <goal>prepare-agent</goal>
         </goals>
-    </execution>
+      </execution>
 
-    <execution>
-      <id>check</id>
-      <goals>
-        <goal>check</goal>
-      </goals>
-      <configuration>
-        <rules>
-          <rule>
-            <limits>
-              <limit>
-                <counter>BRANCH</counter>
-                <value>COVEREDRATIO</value>
-                <minimum>100%</minimum>
-              </limit>
-            </limits>
-          </rule>
-        </rules>
-      </configuration>
-   </execution>
-  </executions>
-</plugins>
+      <execution>
+        <id>report</id>
+        <phase>verify</phase>
+          <goals>
+            <goal>report</goal>
+          </goals>
+      </execution>
+
+      <execution>
+        <id>check</id>
+        <goals>
+          <goal>check</goal>
+        </goals>
+        <configuration>
+          <rules>
+            <rule>
+              <limits>
+                <limit>
+                  <counter>BRANCH</counter>
+                  <value>COVEREDRATIO</value>
+                  <minimum>100%</minimum>
+                </limit>
+              </limits>
+            </rule>
+          </rules>
+        </configuration>
+     </execution>
+    </executions>
+  </plugin> 
 
 ```
 - **TelegramBot** -  библиотека для подключения телеграмм бота.
