@@ -87,6 +87,38 @@
     }
   ```
 
+**Прочее**
+
+* == - подходит только для инт переменных
+* .equals (name.equals("name")) - используется для сравнения  других типов переменных
+* .lenght  - определение длинны слова, строки, массива для сравления
+
+**Continuous Integration**
+непрерывная интеграция - это практика разработки ПО, при которой участники команды интегрируют изменения настолько часто, насколько это возможно (как минимум,
+ежедневно или несколько раз в день). Каждая интеграция верифицируется автоматической сборкой, включая тесты, для определения ошибок интеграции настолько быстро, насколько это возможно. 
+Шаблон для Maven
+
+``` 
+name: Java CI with Maven
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    - name: Build with Maven
+      run: mvn -B -e verify
+
+```
 
 **Подключение пакетов**
 Package  — это механизм организации классов и интерфейсов в логические группы. Он помогает управлять пространством имён, обеспечивая структурирование и упорядочивание кода.
@@ -105,17 +137,64 @@ Package  — это механизм организации классов и и
 
 **Тесты**
 
+Тесты создаются в папке src/test. Название класса повторяет название основного класса с добавлением в название *Test.
+* Переменная expected содержит ожидаемый результат
+* Переменная actual - результат вычисления метода.
+Для запуска тестов в файл pom.xml добавляется зависимость JUnit Jupiter и плагин Surefire
+
+```java
+
+  public class NameClassTest {
+
+    @Test
+    public void nameTest() {
+
+        NameClass service = new NameClass();
+
+        int expected = ;
+        int actual = service.nameMetod();
+
+        Assertions.assertEquals(expected, actual);
+    }
+  }
+
+```
 
 
 **Параметризированные тесты**
 
+Параметризированные тесты - это тесты, которые дают возможность прогонять один и тот же тест с разными входящими параметрами. Параметры для теста находятся в специальном файле, который подгружается к тестам.
+
+```java
+
+public class NameClassTest {
+
+    @ParameterizedTest
+    @CsvSource(files = "src/test/resources/nameMetod.csv")
+    public void nameTest(параметры) {
+
+        NameClass service = new NameClass();
+
+        int actual = service.nameMetod();
+
+        Assertions.assertEquals(expected, actual);
+    }
+  }
+
+```
+```
+nameMetod.csv
+3, 10000, 3000, 20000
+2, 100000, 60000, 150000
+```
 
 
 
-**Прочее**
+**Библиотеки**
+
 Подключение библиотек происходит в файле pom.xml  в теге ```<dependencies></dependencies>```
 
-Сборник библиотек для Maven:[ссылка на библиотеку](https://Maven Central Repository: mvnrepository.com/repos/central)
+Сборник библиотек для Maven: https://mvnrepository.com/
 
 - **Apache HttpClient** - Библиотека для HTTP  запросов
 
@@ -169,6 +248,57 @@ Package  — это механизм организации классов и и
     </build>
 ```
 
+**JaCoCo**
+
+Code Coverage — метрика, показывающая, насколько наш код покрыт автотестами, т.е. % запущенного в результате прогона автотестов.
+
+```
+<plugins>
+  <plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.5</version>
+  </plugin> 
+
+  <executions>
+    <execution>
+      <id>prepare-agent</id>
+      <goals>
+        <goal>prepare-agent</goal>
+      </goals>
+    </execution>
+
+    <execution>
+      <id>report</id>
+      <phase>verify</phase>
+        <goals>
+          <goal>report</goal>
+        </goals>
+    </execution>
+
+    <execution>
+      <id>check</id>
+      <goals>
+        <goal>check</goal>
+      </goals>
+      <configuration>
+        <rules>
+          <rule>
+            <limits>
+              <limit>
+                <counter>BRANCH</counter>
+                <value>COVEREDRATIO</value>
+                <minimum>100%</minimum>
+              </limit>
+            </limits>
+          </rule>
+        </rules>
+      </configuration>
+   </execution>
+  </executions>
+</plugins>
+
+```
 - **TelegramBot** -  библиотека для подключения телеграмм бота.
 
 [Библиотека](https://github.com/rubenlagus/TelegramBots/blob/aad139de980ae25ee7a4b06bbe7644c6077421ce/TelegramBots.wiki/Getting-Started.md)
