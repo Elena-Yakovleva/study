@@ -110,10 +110,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 11
+    - name: Set up JDK 17
       uses: actions/setup-java@v2
       with:
-        java-version: '11'
+        java-version: '17'
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B -e verify
@@ -230,7 +230,7 @@ nameMetod.csv
     </dependency>
 ```
 
-- **Surefire** - плагин для Maven, без которого автотесты могут не запускаться  
+- **Surefire** - плагин для Maven, без которого автотесты могут не запускаться  подключается в теге <build> </build>
 
 ```java
 
@@ -257,7 +257,7 @@ Code Coverage — метрика, показывающая, насколько �
   <plugin>
     <groupId>org.jacoco</groupId>
     <artifactId>jacoco-maven-plugin</artifactId>
-    <version>0.8.5</version>
+    <version>0.8.11</version>
 
     <executions>
       <execution>
