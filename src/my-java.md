@@ -298,6 +298,19 @@ Code Coverage — метрика, показывающая, насколько �
   </plugin> 
 
 ```
+**Lombok**
+Программа для Maven  для создания базовых конструкторов
+
+```java
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.18.36</version>
+		<scope>provided</scope>
+	</dependency>
+
+```
+
 - **TelegramBot** -  библиотека для подключения телеграмм бота.
 
 [Библиотека](https://github.com/rubenlagus/TelegramBots/blob/aad139de980ae25ee7a4b06bbe7644c6077421ce/TelegramBots.wiki/Getting-Started.md)
